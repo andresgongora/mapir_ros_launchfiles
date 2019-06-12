@@ -1,0 +1,129 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>
+
+	### W1C
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W1C1" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W1C1/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W1C1/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceC.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W1C2" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W1C2/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W1C2/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceC.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+	
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W1C3" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W1C3/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W1C3/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceC.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W1C4" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W1C4/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W1C4/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceC.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+	
+	
+	
+	### W2F
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W2F1" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W2F1/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W2F1/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceF.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W2F2" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W2F2/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W2F2/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceF.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+	
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W2F3" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W2F3/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W2F3/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceF.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W2F4" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W2F4/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W2F4/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceF.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+	
+	
+	
+	
+	### W3D
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W3D1" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W3D1/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W3D1/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceD.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W3D2" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W3D2/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W3D2/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceD.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+	
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W3D3" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W3D3/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W3D3/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceD.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W3D4" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W3D4/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W3D4/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceD.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+	
+	
+	
+
+	### W4B
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W4B1" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W4B1/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W4B1/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceB.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W4B2" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W4B2/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W4B2/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceB.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+	
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W4B3" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W4B3/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W4B3/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceB.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+
+	<node pkg="gas_simulation_analyzer" type="analyzer.py" name="gas_simulation_analyzer_analyzer_W4B4" output="screen">	    
+		<param name="input_dir"			value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/unbagged/W4B4/"/>
+		<param name="output_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W4B4/"/>
+		<param name="distance_map_file"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceB.csv"/>	
+		<param name="update_period"		value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+	
+</launch>

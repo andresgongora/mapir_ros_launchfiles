@@ -1,0 +1,21 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>
+
+	## GLOBAL VARS
+	<arg name="FixedFrame" default="/map" />
+
+	## ANALYZER
+	<node pkg="gas_simulation_analyzer" type="gas_simulation_analyzer" name="gas_simulation_analyzer" output="screen">	    
+		<param name="/fixed_frame"		value="$(arg FixedFrame)"/>
+		<param name="/log_file_output_path"	value="/home/andy/.ros/"/>
+		<param name="/log_file_name"		value="log.txt"/>
+		<param name="/max_gas_concentration"	value="10.0"/>
+		<param name="/min_gas_concentration"	value="0.01"/>
+	</node>
+	
+	
+
+</launch>
+
+

@@ -1,0 +1,35 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>
+	<!-- SIMULATION -->
+	<param name="use_sim_time" value="true" />
+	<include file="$(find missions_pkg)/launch/simbot/simbot_stage.launch" >
+		<arg name="world_file" value="-d $(find missions_pkg)/stage/andresgongora_square.world" />
+	</include>
+	
+		
+	<!-- PLUMESIM and VIRTUAL_ENOSE -->
+	<include file="$(find missions_pkg)/launch/simbot/simbot_plumesim.launch" />
+	<include file="$(find missions_pkg)/launch/simbot/simbot_virtual_enose.launch" />
+	<include file="$(find missions_pkg)/launch/simbot/simbot_virtual_anemometer.launch" />
+<!--	<include file="$(find missions_pkg)/launch/simbot/simbot_windsim.launch" /> -->
+	
+
+	<!-- MAPPING/SLAM -->
+	<include file="$(find missions_pkg)/launch/simbot/simbot_map_server.launch">	
+		<arg name="map_file" value="$(find missions_pkg)/maps/andresgongora_square.yaml" />		
+	</include>
+<!--	<include file="$(find missions_pkg)/launch/simbot/simbot_amcl_diff.launch" />
+	<include file="$(find missions_pkg)/launch/simbot/simbot_move_base.launch" /> -->
+	<include file="$(find missions_pkg)/launch/simbot/simbot_static_transform_publisher.launch" />	
+
+
+
+	<!-- OLFACTION -->
+	<!-- <include file="$(find missions_pkg)/launch/simbot/simbot_gas_distribution_mapping.launch" /> -->
+	
+
+	<!-- VIZ -->
+	<node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find missions_pkg)/rviz/andresgongora_wind.rviz"/>	
+	<node name="rviz_gas" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find missions_pkg)/rviz/gas_sim.rviz"/>	
+</launch>

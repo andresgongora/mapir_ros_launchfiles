@@ -1,0 +1,23 @@
+<!-- 
+  This node controls the API for the MAPIR robots "IOT"
+-->
+
+<launch>
+	<arg name="launch_prefix" default="" />
+
+	<node pkg="mapir_iot_api" type="mapir_iot_api_node" name="mapir_iot_api" launch-prefix="$(arg launch_prefix)" output="screen">
+		<param name="input_topic" value="/mqtt2ros"/>
+		<param name="output_topic" value="/ros2mqtt" />
+		<param name="ACKRate" value="-1" />
+		<param name="statusRate" value="2"/>
+		<param name="battery_topic" value="/giraff_battery" />
+		<param name="gasSensor_topic" value="/olfaction/normalized_gas_sensor" />
+		<param name="gasSensor_max" value="1.0" />
+		<param name="windSensor_topic" value="/olfaction/anemometer" />
+		<param name="windSensor_topic_pub" value="/DISABLED/anemometer_MAPIR_IOT_API" />
+		<param name="gasSensor_topic_pub" value="/DISABLED/normalized_gas_sensor_MAPIR_IOT_API" />
+		<param name="motion_topic" value="/DISABLED/cmd_vel_MAPIR_IOT_API" />
+		<param name="motion_topic_pub" value="/cmd_vel" />
+
+	</node>
+</launch>

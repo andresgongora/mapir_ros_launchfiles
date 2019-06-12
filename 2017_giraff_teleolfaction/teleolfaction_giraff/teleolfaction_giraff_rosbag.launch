@@ -1,0 +1,8 @@
+<!-- rosbag control -->
+
+<launch>
+
+	<!-- RECORD BAG FILE -->
+	<node pkg="rosbag" type="record" name="rosbag_record" args=" -j -a -x '/ros2mqtt|/mqtt2ros|/DISABLED/(.*)|/laser_scan|/giraff_battery|/hokuyo/(.*)|/particlecloud|/rf2o_laser_odometry/odom_rf2o|/gmrf_node/(.*)' -o 2017_teleolfaction"/>
+
+</launch>

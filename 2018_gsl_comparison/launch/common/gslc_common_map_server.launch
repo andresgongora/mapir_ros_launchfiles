@@ -1,0 +1,17 @@
+<!-- main mission file for the giraff_teleolfaction remote control station -->
+
+<launch>
+
+
+	### MAP ###
+	<arg name="map_file" default="$(find missions_pkg)/launch/andresgongora/2018_gsl_comparison/maps/map_01.yaml" />
+	<arg name="launch_prefix" default="" />
+	
+	<node name="map_remote" pkg="map_server" type="map_server" args="$(arg map_file)" launch-prefix="$(arg launch_prefix)">
+		<remap from="map" to="map_remote" />
+		<param name="frame_id" type="string" value="map_remote
+		" />		
+	</node>
+
+
+</launch>

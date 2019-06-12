@@ -1,0 +1,14 @@
+<!-- 
+  Launch file for the MQTT mosquitto bridge 
+  The module connects a MQTT broker with ROS
+-->
+<launch> 
+	<node pkg="mqtt_bridge" type="mqtt_bridge_node" name="mqtt_bridge" respawn="false">
+		<param name="host" value="andywifi"/>    ### server IP
+		<param name="port" value="8002"/>               ### server port
+		<param name="username" value="mapir"/>
+		<param name="password" value="mapir236"/>
+		<param name="MQTT_topicName" value="andresgongora_teleolfaction"/>    
+		<param name="MQTT_topics_subscribe" value= "NavigationCommand" />
+	</node>
+</launch>

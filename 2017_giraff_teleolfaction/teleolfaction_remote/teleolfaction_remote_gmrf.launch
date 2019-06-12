@@ -1,0 +1,31 @@
+<!-- gas distribution mapping -->
+
+<launch>
+	
+	<arg name="launch_prefix" default="" />
+	<!-- <node pkg="tf" type="static_transform_publisher" name="tf_gasMap_broadcaster" args="0 0 0 1.57 0 3.14 /map /gas_map 100" /> -->
+
+	<node pkg="gmrf_gas_mapping" type="gmrf_gas_mapping_node" name="gmrf_node" launch-prefix="$(arg launch_prefix)" output="screen">
+		<param name="frame_id" value="/map_remote" />
+		<param name="occupancy_map_topic" value="/map_remote" />
+		<param name="sensor_topic" value="/olfaction/normalized_gas_sensor" /> ### (read) topic for gas sensor/enose		
+		<param name="exec_freq" value="1" />				### (Hz) frequency to update and publish the maps		
+		<param name="cell_size" value="0.5" />				### (m)
+		<param name="output_csv_file" value="/home/giraff/map" />
+		
+		#GMRF params
+		<param name="GMRF_lambdaPrior" value="0.5" />			### The information (Lambda) of prior factors
+		<param name="GMRF_lambdaObs" value="10.0" />			### The initial information (Lambda) of each observation (this information may decrease with time)
+		<param name="GMRF_lambdaObsLoss" value="0.0" />			### The loss of information (Lambda) of the observations with each iteration (see exec_freq)
+		
+		### Visualization
+		<param name="colormap" value="jet" />				### jet, hot, cool, spring, summer, autumn, winter, bone, copper, red, green
+		<param name="max_pclpoints_cell" value="20" />			### Max number of points to plot per cell (when concentration is max)
+		<param name="min_sensor_val" value="0" />			### 
+		<param name="max_sensor_val" value="1" />		
+		
+		### services
+		<param name="suggest_next_location_sensor_th" value="5" /> 	### Minimum value of a MeanMap_cell to suggest the location for next measurement
+	</node>
+	
+</launch>

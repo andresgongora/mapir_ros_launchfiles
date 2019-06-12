@@ -1,0 +1,34 @@
+<!-- 
+	Launchfile for the MAPIR e-nose normalizer
+-->
+
+<launch>
+
+	### MAPIR NOSE ###
+	<node pkg="mapir_nose" name="mapir_nose" type="mapir_nose" output="screen">
+		<param name="serial_device" value="/dev/ttyUSB1"/>
+		<param name="topic" value="/olfaction/mapir_enose"/>
+	</node>
+	
+	
+	### ANEMOMETER ###
+	<node pkg="windsonic" name="windsonic" type="windsonic_node" output="screen">
+		<param name="port" value="/dev/ttyUSB0"/>
+		<param name="frame_id" value="/windsonic_link"/>
+		<param name="topic" value="/olfaction/anemometer"/>
+	</node>
+
+
+	### E-NOSE NORMALIZER ###
+	<node pkg="simple_enose_normalizer" name="simple_enose_normalizer" type="simple_enose_normalizer.py" output="screen">
+		<param name="subscribe_topic" value="/olfaction/mapir_enose"/>
+		<param name="publish_topic" value="/olfaction/normalized_gas_sensor"/>
+		<param name="sensor_baseline" value="1.6"/>
+		<param name="sensor_maximum" value="4.5"/>
+	</node>
+	
+	
+	### ANEMOMETER ###
+	<!--<include file="$(find missions_pkg)/launch/giraff/giraff_ft702lm_anemometer.launch" />-->
+	
+</launch>

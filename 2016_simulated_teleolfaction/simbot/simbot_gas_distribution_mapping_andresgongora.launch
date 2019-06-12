@@ -1,0 +1,49 @@
+<!-- GAS DISTRIBUTION MAPPING -->
+<launch>
+    <arg name="launch_prefix" default="" />
+    <!-- <node pkg="tf" type="static_transform_publisher" name="tf_gasMap_broadcaster" args="0 0 0 1.57 0 3.14 /map /gas_map 100" /> -->
+    
+	<!--
+	<node pkg="kernel_dmv_mapping" type="kernel_dmv_node" name="kernel_dmv_node" output="screen">
+		<param name="frame_id" value="/map" />
+		<param name="location_topic" value="/amcl_pose" />          ### (read) topic for localization/odometry
+		<param name="sensor_topic" value="/PID/Sensor_reading" /> ### (read) topic for gas sensor/enose
+		<param name="kernel_size" value="0.4" />                    ### (m) Size of the gaussian kernel
+		<param name="sigma_omega" value="0.9" />                    ### Scaling factor for the confidence map: default = 1/(2*PI*pow(kernel_size,2));
+		<param name="exec_freq" value="40" />                       ### (Hz) frequency to update the maps
+		### MAP params
+		<param name="cell_size" value="0.1" />                      ### (m)
+		### Visualization
+		<param name="n_points" value="20" />                        ### Max number of points to plot per cell (when concentration is max)
+		<param name="min_sensor_val" value="0" />                   ### If (min_sensor_val == max_sensor_val == 0 ) then the min/max are found in the map on each iteration
+		<param name="max_sensor_val" value="6" />		
+		<param name="colormap" value="jet" />                       ### jet, hot, cool, spring, summer, autumn, winter, bone, copper, red, green
+		<param name="publish_hz" value="1" />                       ### Hz, frequency to publish the maps as ROS topics
+		### services
+		<param name="suggest_next_location_sensor_th" value="5" />  ### Minimum value of a MeanMap_cell to suggest the location for next measurement
+	</node>
+	-->
+
+	<node pkg="gmrf_mapping" type="gmrf_node" name="gmrf_node" output="screen" launch-prefix="$(arg launch_prefix)">
+		<param name="frame_id" value="/map" />
+		<param name="sensor_topic" value="/PID/Sensor_reading" />   ### (read) topic for gas sensor/enose		
+		<param name="exec_freq" value="10" />                      ### (Hz) frequency to update and publish the maps		
+		<param name="cell_size" value="0.21" />                     ### (m)
+		
+		#GMRF params
+		<param name="GMRF_lambdaPrior" value="0.5" />               ### The information (Lambda) of prior factors
+		<param name="GMRF_lambdaObs" value="10.0" />                ### The initial information (Lambda) of each observation (this information may decrease with time)
+		<param name="GMRF_lambdaObsLoss" value="0.0" />             ### The loss of information (Lambda) of the observations with each iteration (see exec_freq)
+		
+		### Visualization
+		<param name="colormap" value="jet" />                       ### jet, hot, cool, spring, summer, autumn, winter, bone, copper, red, green
+		<param name="max_pclpoints_cell" value="20" />              ### Max number of points to plot per cell (when concentration is max)
+		<param name="min_sensor_val" value="0" />                   ### 
+		<param name="max_sensor_val" value="1" />		
+		
+		
+		### services
+		<param name="suggest_next_location_sensor_th" value="5" />  ### Minimum value of a MeanMap_cell to suggest the location for next measurement
+	</node>
+
+</launch>

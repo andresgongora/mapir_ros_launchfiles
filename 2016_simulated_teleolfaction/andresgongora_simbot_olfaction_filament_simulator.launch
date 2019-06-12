@@ -1,0 +1,9 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>  
+	### FILAMENT SIMULATOR ###
+	<include file="$(find missions_pkg)/launch/simbot/simbot_filament_simulator_andresgongora.launch" />
+  
+	### VIZ ###  
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find missions_pkg)/rviz/simbot_olfaction_filament_simulator.rviz"/>
+</launch>

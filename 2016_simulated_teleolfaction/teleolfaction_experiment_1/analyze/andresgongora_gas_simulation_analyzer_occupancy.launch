@@ -1,0 +1,20 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>
+	## GLOBAL VARS
+	<arg name="FixedFrame" default="/map" />
+
+	## ANALYZER
+	<node pkg="gas_simulation_analyzer" type="occupancy_grid_generator.py" name="gas_simulation_analyzer_occupancy_grid_generator" output="screen">	    
+		<param name="input_dir"		value="/home/andy/TRH Dataset/data/W1C1/"/>		# Where to log for rosbag files
+		<param name="output_dir"	value="/home/andy/TRH Dataset/maps/0.5/W1C1/"/>		# Where to write TXT files to
+		<param name="fixed_frame"	value="$(arg FixedFrame)"/>
+		<param name="start_x"		value="-5.0"/>
+		<param name="end_x"		value="5.0"/>
+		<param name="start_y"		value="-5.5"/>
+		<param name="end_y"		value="5.5"/>
+		<param name="resolution"	value="0.5"/>
+		<param name="map_max"		value="20.0"/>
+	</node>
+	
+</launch>

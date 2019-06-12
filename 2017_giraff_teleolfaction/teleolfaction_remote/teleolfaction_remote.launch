@@ -1,0 +1,13 @@
+<!-- main mission file for the giraff_teleolfaction remote control station -->
+
+<launch>
+	<!-- DISPLAY -->
+	<include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_remote/teleolfaction_remote_display.launch" />
+	<!-- <include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_remote/teleolfaction_remote_rviz.launch" /> -->
+	
+	
+	<!-- GMRF -->
+	<include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_remote/teleolfaction_remote_gmrf.launch" />
+	
+  
+</launch>

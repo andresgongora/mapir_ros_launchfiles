@@ -1,0 +1,9 @@
+<!-- publish tf map-odom -->
+
+<launch>
+
+	<arg name="FixedFrame" default="map" />
+
+	<node pkg="tf" type="static_transform_publisher" name="static_transform_publisher" respawn="false" output="screen" args="0.25 4
+	 0 0 0 0.95 1 map_remote map 100" />
+</launch>

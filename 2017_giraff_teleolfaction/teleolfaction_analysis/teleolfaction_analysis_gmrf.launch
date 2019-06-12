@@ -1,0 +1,99 @@
+<!-- Analyze rosbag and generate GMRF map (stored as csv file) -->
+
+<launch>
+
+	### SELECT ROSBAG ###
+	<!--
+	D1E1G
+	D1E2G
+	D1E3E
+	D1E4F
+	D1E5E
+
+	D2E1G
+	D2E2G
+	D2E3F
+	D2E4F
+
+	D3E1F
+	D3E2E
+	D3E3G
+	D3E4F
+
+	D4E1G
+	D4E3G
+
+	D5E1E
+	D5E2E
+	D5E3F
+	D5E4F
+	D5E5F
+	D5E6F
+
+	D6E1E
+	D6E3F
+	D6E4E
+	D6E5G
+	D6E6G
+	D6E7E
+
+	D7E1
+	D7E2
+	D7E3
+	D7E4
+	D7E5
+	D7E6
+
+	D8E1
+	D8E2
+	D8E3
+	D8E4
+	D8E5
+	D8E6
+
+	-->	
+	<arg name="rosbag_file" default="/home/giraff/tmp/bags/D07E4D.bag" />
+
+
+
+	### MAP ###
+	<include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_remote/teleolfaction_remote_map_server.launch" />
+
+
+
+	### RVIZ ###
+	<node name="rviz_remote" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/rviz/teleolfaction_experiment.rviz"/>
+
+
+
+	### GENERATE GMRF MAP ###
+	<node pkg="gmrf_gas_mapping" type="gmrf_gas_mapping_node" name="gmrf_node" output="screen">
+		<param name="frame_id" value="/map_remote" />
+		<param name="occupancy_map_topic" value="/map_walls" />
+		<param name="sensor_topic" value="/olfaction/normalized_gas_sensor" /> ### (read) topic for gas sensor/enose		
+		<param name="exec_freq" value="10.0" />				### (Hz) frequency to update and publish the maps		
+		<param name="cell_size" value="0.25" />				### (m)
+		<param name="output_csv_file" value="$(arg rosbag_file)" />
+		
+		#GMRF params
+		<param name="GMRF_lambdaPrior" value="0.5" />		### The information (Lambda) of prior factors
+		<param name="GMRF_lambdaObs" value="10.0" />		### The initial information (Lambda) of each observation (this information may decrease with time)
+		<param name="GMRF_lambdaObsLoss" value="0.0" />		### The loss of information (Lambda) of the observations with each iteration (see exec_freq)
+		
+		### Visualization
+		<param name="colormap" value="jet" />			### jet, hot, cool, spring, summer, autumn, winter, bone, copper, red, green
+		<param name="max_pclpoints_cell" value="20" />		### Max number of points to plot per cell (when concentration is max)
+		<param name="min_sensor_val" value="0" />		### 
+		<param name="max_sensor_val" value="1" />		
+		
+		### services
+		<param name="suggest_next_location_sensor_th" value="5" />  ### Minimum value of a MeanMap_cell to suggest the location for next measurement
+	</node>
+
+
+
+	### REPLAY ROSBAG ###
+	<node pkg="rosbag" type="play" name="rosbag_play" args="--clock -k -r 10 --queue=1000 $(arg rosbag_file)"/>
+
+	
+</launch>

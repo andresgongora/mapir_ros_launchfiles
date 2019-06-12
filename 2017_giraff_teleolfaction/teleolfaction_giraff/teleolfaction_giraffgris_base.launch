@@ -1,0 +1,18 @@
+<!-- base nodes for the giraff_teleolfaction giraff robot -->
+
+<launch>
+
+	### HW DRIVERS and TF ###
+	<include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_giraff/teleolfaction_giraffgris_giraff_ros_driver.launch"/>
+	<include file="$(find missions_pkg)/launch/giraffgris/giraffgris_hokuyo.launch"/>
+
+  
+	### NAVIGATION ###
+	<include file="$(find missions_pkg)/launch/giraffgris/giraffgris_rf2o_laser_odometry.launch" />
+	<include file="$(find missions_pkg)/launch/giraffgris/giraffgris_move_base.launch" />
+	<include file="$(find missions_pkg)/launch/giraffgris/giraffgris_amcl_diff.launch" />
+	<include file="$(find missions_pkg)/launch/giraffgris/giraffgris_map_server.launch" >
+		<arg name="map_file" value="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/maps/teleolfaction_map.yaml" />
+  	</include>
+
+</launch>

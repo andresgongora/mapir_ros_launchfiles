@@ -1,0 +1,45 @@
+<!-- GADEN filament simulator -->
+
+<launch>  
+	
+	### GADEN SIMULATOR ###
+	<include file="$(find missions_pkg)/launch/andresgongora/2018_gsl_comparison/launch/gaden_simulator/gslc_gaden_simulator.launch">
+		<arg name="FixedFrame" value="/map" />
+	
+		<arg name="PPM" value="10" />
+		<arg name="SIMULATION_TIME" value="1200" />
+		<arg name="GAS_TYPE" value="0" />
+		
+		<arg name="WIND_FILE" value="$(find missions_pkg)/launch/andresgongora/2018_gsl_comparison/maps/small_office/wind_1/wind_at_cell_center_points" />
+		<arg name="3D_MAP_FILE" value="$(find missions_pkg)/launch/andresgongora/2018_gsl_comparison/maps/small_office/small_office_map_3D.csv" />
+		<arg name="CAD_FILE" value="package://missions_pkg/launch/andresgongora/2018_gsl_comparison/maps/small_office/small_office_walls.dae" />
+		<arg name="OUTPUT_DIR" value="/home/giraff/gaden_out" />
+		
+		<arg name="SOURCE_1_POS_X" value="0.0"/>
+		<arg name="SOURCE_1_POS_Y" value="-1.0"/>
+		<arg name="SOURCE_1_POS_Z" value="1.0"/>
+		
+		<arg name="SOURCE_2_POS_X" value="3.75"/>
+		<arg name="SOURCE_2_POS_Y" value="1.25"/>
+		<arg name="SOURCE_2_POS_Z" value="1.0"/>
+		
+		<arg name="SOURCE_3_POS_X" value="1.25"/>
+		<arg name="SOURCE_3_POS_Y" value="1.25"/>
+		<arg name="SOURCE_3_POS_Z" value="1.0"/>
+		
+		<arg name="SOURCE_4_POS_X" value="2.5"/>
+		<arg name="SOURCE_4_POS_Y" value="3.75"/>
+		<arg name="SOURCE_4_POS_Z" value="1.0"/>
+		
+		<arg name="SOURCE_5_POS_X" value="1.5"/>
+		<arg name="SOURCE_5_POS_Y" value="-1.5"/>
+		<arg name="SOURCE_5_POS_Z" value="1.0"/>
+	</include>
+	
+	
+	
+	### MAP SERVER ###
+	<include file="$(find missions_pkg)/launch/andresgongora/2018_gsl_comparison/launch/maps/gslc_small_office_map_server.launch" />
+  
+  
+</launch>

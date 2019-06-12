@@ -1,0 +1,11 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>
+	## ANALYZER
+	<node pkg="teleolfaction_analyzer" type="unbagger.py" name="teleolfaction_analyzer_unbagger" output="screen">	    
+		<param name="input_dir"		value="/home/giraff/tmp/bags/"/>		# Where to log for rosbag files
+		<param name="output_dir"	value="/home/giraff/tmp/unbagged/"/>		# Where to write TXT files to
+		<param name="update_period"	value="0.5"/>					# Time resolution. Recommended 0.1
+	</node>
+	
+</launch>

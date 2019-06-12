@@ -1,0 +1,63 @@
+<!-- main mission file for the giraff_teleolfaction remote control station -->
+
+<launch>
+	<!-- PARAMETERS -->
+	<!--<arg name="FixedFrame" default="/map" />-->
+
+
+	### MAP ###
+	<include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_remote/teleolfaction_remote_static_transform_publisher.launch" />
+	<include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_remote/teleolfaction_remote_map_server.launch" />
+
+
+	## VISUALIZATION ###
+	<node name="pose_marker" pkg="pose_marker" type="pose_marker.py" respawn="true" output="screen">
+		<param name="tf_ref" type="string" value="base_link" />
+		<param name="marker_topic" type="string" value="pose_marker_remote" />
+	</node>
+
+	<!--
+	### GAS SOURCE CANDIDATES ###
+	<node pkg="pose_marker" type="static_cylinder_publisher.py" name="cylinderA" respawn="false">
+		<param name="cylinder_topic" type="string" value="olfaction/cylA" />
+		<param name="cylinder_x" type="double" value="-2.5" />
+		<param name="cylinder_y" type="double" value="-3.0" />
+	</node>
+
+	<node pkg="pose_marker" type="static_cylinder_publisher.py" name="cylinderB" respawn="false">
+		<param name="cylinder_topic" type="string" value="olfaction/cylB" />
+		<param name="cylinder_x" type="double" value="2.5" />
+		<param name="cylinder_y" type="double" value="-3.0" />
+	</node>
+
+	<node pkg="pose_marker" type="static_cylinder_publisher.py" name="cylinderC" respawn="false">
+		<param name="cylinder_topic" type="string" value="olfaction/cylC" />
+		<param name="cylinder_x" type="double" value="0.5" />
+		<param name="cylinder_y" type="double" value="-1.5" />
+	</node>
+
+	<node pkg="pose_marker" type="static_cylinder_publisher.py" name="cylinderD" respawn="false">
+		<param name="cylinder_topic" type="string" value="olfaction/cylD" />
+		<param name="cylinder_x" type="double" value="1.5" />
+		<param name="cylinder_y" type="double" value="0.5" />
+	</node>
+
+	<node pkg="pose_marker" type="static_cylinder_publisher.py" name="cylinderE" respawn="false">
+		<param name="cylinder_topic" type="string" value="olfaction/cylE" />
+		<param name="cylinder_x" type="double" value="-4.0" />
+		<param name="cylinder_y" type="double" value="2.0" />
+	</node>
+	
+	<node pkg="pose_marker" type="static_cylinder_publisher.py" name="cylinderF" respawn="false">
+		<param name="cylinder_topic" type="string" value="olfaction/cylF" />
+		<param name="cylinder_x" type="double" value="-0.5" />
+		<param name="cylinder_y" type="double" value="3.5" />
+	</node>
+	
+	<node pkg="pose_marker" type="static_cylinder_publisher.py" name="cylinderG" respawn="false">
+		<param name="cylinder_topic" type="string" value="olfaction/cylG" />
+		<param name="cylinder_x" type="double" value="4.0" />
+		<param name="cylinder_y" type="double" value="5.0" />
+	</node>
+	-->
+</launch>

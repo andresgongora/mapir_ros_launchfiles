@@ -1,0 +1,32 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>
+  <!-- SIMULATION -->
+  <param name="use_sim_time" value="true" />
+  <include file="$(find missions_pkg)/launch/simbot/simbot_stage.launch" >
+    <arg name="world_file" value="-d $(find missions_pkg)/stage/UMA_236_237.world" />
+  </include>
+  
+  <!-- PLUMESIM and VIRTUAL_ENOSE -->
+<!--  <include file="$(find missions_pkg)/launch/simbot/simbot_plumesim.launch" />
+  <include file="$(find missions_pkg)/launch/simbot/simbot_virtual_enose.launch" />
+  <include file="$(find missions_pkg)/launch/simbot/simbot_virtual_anemometer.launch" />-->
+
+  <!-- MAPPING/SLAM -->
+  <include file="$(find missions_pkg)/launch/simbot/simbot_map_server.launch">  
+    <arg name="map_file" value="$(find missions_pkg)/maps/UMA_236_237.yaml" />    
+  </include>  
+  <include file="$(find missions_pkg)/launch/simbot/simbot_move_base.launch" />
+  <include file="$(find missions_pkg)/launch/simbot/simbot_amcl_diff.launch" />
+  
+  <!-- OLFACTION -->
+<!--  <include file="$(find missions_pkg)/launch/simbot/simbot_gas_source_localization.launch" /> -->
+<!--  <include file="$(find missions_pkg)/launch/simbot/simbot_gas_distribution_mapping.launch" /> -->
+  
+
+  <!-- VIZ -->
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find missions_pkg)/rviz/gas_sim.rviz"/>
+  <!--  <node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find missions_pkg)/rviz/simbot_odometry.rviz"/> -->
+  
+</launch>
+

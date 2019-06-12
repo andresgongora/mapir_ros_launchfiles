@@ -1,0 +1,49 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>
+	### SIMULATION ###
+	<param name="use_sim_time" value="true" />
+	<include file="$(find missions_pkg)/launch/simbot/simbot_stage.launch" >
+		<arg name="world_file" value="-d $(find missions_pkg)/stage/demo_oru.world" />
+	</include>
+
+
+
+	
+	### NAVIGATION ###
+	<include file="$(find missions_pkg)/launch/simbot/simbot_map_server.launch">
+		<arg name="map_file" value="$(find missions_pkg)/maps/demo_oru.yaml" />	
+	</include>	
+	<include file="$(find missions_pkg)/launch/simbot/simbot_move_base.launch" >
+		<arg name="launch_prefix" value="xterm -e" />
+	</include>
+	<include file="$(find missions_pkg)/launch/simbot/simbot_amcl_diff.launch" />
+<!--	<include file="$(find missions_pkg)/launch/simbot/simbot_static_transform_publisher.launch" />-->
+	<include file="$(find missions_pkg)/launch/andresgongora_simbot_joystick_control.launch" />	
+
+
+
+
+	### FILAMENT SIMULATOR (Offline use) ###
+	<!--<include file="$(find missions_pkg)/launch/simbot/simbot_gas_dispersion_simulation.launch" />	-->
+
+	### GAS DISPERSION PLAYER ###
+	<include file="$(find missions_pkg)/launch/simbot/simbot_gas_dispersion_simulation_player_andy.launch" />
+
+
+	
+	
+	### OLFACTION ###
+	<!--
+	<include file="$(find missions_pkg)/launch/simbot/simbot_gas_source_localization.launch" />
+	<include file="$(find missions_pkg)/launch/simbot/simbot_gas_distribution_mapping.launch" />
+	-->
+
+
+
+
+	### VIZ ###	
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find environment)/configuration_dispsim.rviz"/>
+</launch>
+
+

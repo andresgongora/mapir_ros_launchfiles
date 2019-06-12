@@ -1,0 +1,23 @@
+<!-- main mission file for the giraff_teleolfaction giraff robot -->
+
+<launch>
+
+	### PARAMETERS ###
+	<!--<arg name="FixedFrame" default="/map" />-->
+
+	
+	### BASE GIRAFF NODES ###
+	<include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_giraff/teleolfaction_giraffgris_base.launch" />
+  	
+  	
+  	### CUSTOM FOR THIS EXPERIMENT ----------------------------------------- ###
+  	
+  	### MQTT ###
+	<include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_giraff/teleolfaction_giraff_mqtt_bridge.launch" />	
+	<include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_giraff/teleolfaction_giraff_mapir_iot_api.launch" />	
+
+
+	### OLFACTION ###
+	<include file="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/teleolfaction_giraff/teleolfaction_giraff_olfaction.launch" />
+  
+</launch>

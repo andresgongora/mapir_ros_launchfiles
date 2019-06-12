@@ -1,0 +1,11 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>
+	## ANALYZER
+	<node pkg="gas_simulation_analyzer" type="unbagger.py" name="gas_simulation_analyzer_unbagger" output="screen">	    
+		<param name="input_dir"		value="/home/andy/TRH Dataset/rosbags/W3D/"/>		# Where to log for rosbag files
+		<param name="output_dir"	value="/home/andy/TRH Dataset/rosbags/unbagged/W3D/"/>	# Where to write TXT files to
+		<param name="update_period"	value="0.1"/>				# Time resolution. Recommended 0.1
+	</node>
+	
+</launch>

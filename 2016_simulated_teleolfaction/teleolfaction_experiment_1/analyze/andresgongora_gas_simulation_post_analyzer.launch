@@ -1,0 +1,16 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>
+
+	## ANALYZER
+	<node pkg="gas_simulation_analyzer" type="post_analyzer.py" name="gas_simulation_analyzer_post_analyzer" output="screen">	    
+		<param name="input_dir"		value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/data/W1C1/"/>
+		<param name="output_dir"		value="/home/andy/tmp/post/"/>
+		<param name="distance_map_file"	value="/home/andy/Documents/MAPIR/Tele-Olfaction/TRH Dataset/distance_to_source_maps_0.1m/DistanceC.csv"/>	
+	</node>
+	
+	
+
+</launch>
+
+

@@ -1,0 +1,68 @@
+<!-- General mission file for Stage simulation with one robot -->
+
+<launch>
+
+	### RECORD BAG FILE ###
+	<node pkg="rosbag" type="record" name="rosbag_record" args="-a -x '/image|/depth|/camera_info|/gmrf_node/(.*)|/kernel_dmv_node/(.*)|/Gas_Distribution|/filament_visualization|/PID/Sensor_display|/Anemometer01/WindSensor_display|/environment_visualization|/source_visualization|/environment_cad_visualization|/move_base/(.*)' -o teleOlfaction_W3D2"/> ## NAME HERE
+ 
+	
+	### ROBOT SIMULATION ###
+	<param name="use_sim_time" value="true" />
+	<include file="$(find missions_pkg)/launch/simbot/simbot_stage.launch" >
+		<arg name="world_file" value="-d $(find missions_pkg)/stage/MAPIRlab_furniture_andresgongora.world" />
+	</include>
+
+
+		
+	### GAS DISPERSION PLAYER ### ### W1C / W2F / W3D / W4B
+	<!--<include file="$(find missions_pkg)/launch/teleolfaction_experiment_1/wind_gas_combinations/W1C.launch" />-->
+	<!--<include file="$(find missions_pkg)/launch/teleolfaction_experiment_1/wind_gas_combinations/W2F.launch" />-->
+	<include file="$(find missions_pkg)/launch/teleolfaction_experiment_1/wind_gas_combinations/W3D.launch" />
+	<!--<include file="$(find missions_pkg)/launch/teleolfaction_experiment_1/wind_gas_combinations/W4B.launch" />-->
+	
+	
+
+	### NAVIGATION ###
+	<include file="$(find missions_pkg)/launch/simbot/simbot_map_server.launch">
+		<arg name="map_file" value="$(find missions_pkg)/maps/MAPIRlab_furniture.yaml" />		
+	</include>	
+	<include file="$(find missions_pkg)/launch/simbot/simbot_move_base.launch" />
+	<include file="$(find missions_pkg)/launch/simbot/simbot_fake_loc.launch" />
+	<!--<include file="$(find missions_pkg)/launch/simbot/simbot_amcl_diff.launch" />-->
+	<include file="$(find missions_pkg)/launch/simbot/simbot_keyboard_control.launch" />
+ 
+	
+	
+	### COMUNICATIONS ###
+	<include file="$(find missions_pkg)/launch/simbot/simbot_mqtt_bridge.launch" />
+	<include file="$(find missions_pkg)/launch/simbot/simbot_mapir_iot_api.launch" />
+	
+	 
+	
+	### VIZ ###
+	<node name="rviz_player" pkg="rviz" type="rviz" args="-d $(find missions_pkg)/rviz/simbot_olfaction_player_Experiment2.rviz"/>
+	
+	
+	### GAS SIMULATION ANALYZER ###
+	<!--<include file="$(find missions_pkg)/launch/andresgongora_gas_simulation_analyzer.launch" />
+		<param name="gas_simulation_analyzer/log_file_name" value="TEMPLATE.log"/>-->			## NAME HERE
+		### B <!--
+		<param name="gas_simulation_analyzer/gas_source_pose_x"	value="2.5"/>
+		<param name="gas_simulation_analyzer/gas_source_pose_y"	value="-3.0"/>
+		-->		
+		### C <!--
+		<param name="gas_simulation_analyzer/gas_source_pose_x"	value="0.5"/>
+		<param name="gas_simulation_analyzer/gas_source_pose_y"	value="-1.5"/>
+		-->
+		### D <!--
+		<param name="gas_simulation_analyzer/gas_source_pose_x"	value="1.5"/>
+		<param name="gas_simulation_analyzer/gas_source_pose_y"	value="1.5"/>
+		-->
+		### F <!--
+		<param name="gas_simulation_analyzer/gas_source_pose_x"	value="-0.5"/>
+		<param name="gas_simulation_analyzer/gas_source_pose_y"	value="3.5"/>
+		-->
+		
+</launch>
+
+

@@ -1,0 +1,18 @@
+<!-- main mission file for the giraff_teleolfaction remote control station -->
+
+<launch>
+
+
+	### MAP ###
+	<node name="map_remote" pkg="map_server" type="map_server" args="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/maps/teleolfaction_map_furniture.yaml" >
+		<remap from="map" to="map_remote" />
+		<param name="frame_id" type="string" value="map_remote" />		
+	</node>
+
+	<node name="map_walls" pkg="map_server" type="map_server" args="$(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/maps/teleolfaction_map_walls.yaml" >
+		<remap from="map" to="map_walls" />
+		<param name="frame_id" type="string" value="map_remote" />		
+	</node>
+
+
+</launch>

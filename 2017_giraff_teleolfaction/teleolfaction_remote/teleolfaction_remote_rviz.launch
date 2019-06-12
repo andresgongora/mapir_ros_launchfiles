@@ -1,0 +1,8 @@
+<!-- main mission file for the giraff_teleolfaction remote control station -->
+
+<launch>
+
+	### RVIZ ###
+	<node name="rviz_remote" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find missions_pkg)/launch/andresgongora/2017_giraff_teleolfaction/rviz/teleolfaction_experiment.rviz"/>
+
+</launch>

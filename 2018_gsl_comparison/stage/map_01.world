@@ -1,0 +1,152 @@
+#--------------------------------#
+# World file for Stage simulator #
+#--------------------------------#
+
+resolution 0.01	 # resolution of the underlying raytrace model in meters
+interval_sim 100	 # simulation timestep in milliseconds
+
+
+################################################################################
+## DEFINE WORLD
+################################################################################
+define floorMap model				 # The obstacles map of the environment
+(
+	color "gray30"							#specify the color of the object using a color name from the X11 database 
+	boundary 1									# most maps will need a bounding box
+
+	# GUI properties
+	gui_nose 0									#if 1, draw a nose on the model showing its heading (positive X axis)
+	gui_grid 0									#if 1, draw a scaling grid over the model
+	gui_outline 0
+	gui_move 0
+	
+	#Interaction
+	gripper_return 0						#if 1, this model can be gripped by a gripper and can be pushed around by collisions with anything that has a non-zero obstacle_return.
+	fiducial_return 0
+	laser_return 1							#The laser is able to collide with it
+)
+
+
+
+################################################################################
+## DEFINE SENSORS
+################################################################################
+
+## RANGE SENSOR
+define LaserFront ranger
+(
+	## PROPERTIES
+	sensor(
+		range	[ 0.0	30.0 ]		#min max in [m]
+		fov 	270.25				#deg
+		samples	1081				#Num samples
+	)
+
+
+	## APPEARANCE
+	block(
+		points 4
+		point[0] [0 1]
+		point[1] [1 1]
+		point[2] [1 0]
+		point[3] [0 0]
+		z [0 1]
+	)
+
+	color_rgba [ 0 0 1 0.3 ]
+	size [ 0.05 0.005 0.1 ]
+)
+
+
+## RGB CAMERA
+define CameraFront camera
+(
+	## PROPERTIES
+	resolution	[640 480]			#width,height (px)
+	range		[0.2 2.8]			#(m) min, max
+	fov			[ 100.0 100.0 ]		#horizonal, vertical
+	pantilt		[ 0.0 45.0 ]	 	#degrees
+
+	
+	## APPEARANCE
+	color 		"red"
+	size 		[ 0.050 0.050 0.100 ]
+)
+
+
+
+################################################################################
+## DEFINE ROBOT
+################################################################################
+
+## MOBILE ROBOT
+define robotBase position
+(
+	size		[0.30 0.30 1.0]
+	origin		[0.00 0.000 0.000 0.000]
+	gui_nose	1
+	drive		"diff"
+	
+
+	# The robot shapes is then a octagon scalated to the "size" bounding box
+	block( points 9
+		point[0]	[  0.150	 0.000 ]
+		point[1]	[  0.150	 0.100 ]
+		point[2]	[  0.100	 0.150 ]
+		point[3]	[ -0.100	 0.150 ]
+		point[4]	[ -0.150	 0.100 ]
+		point[5]	[ -0.150	-0.100 ]
+		point[6]	[ -0.100	-0.150 ]
+		point[7]	[  0.100	-0.150 ]
+		point[8]	[  0.150	-0.100 ]
+		z 			[  0.000	 1.000 ]
+	)
+
+
+	## SENSORS
+	LaserFront	( pose [ 0.100	 0.000	-0.500	0.000 ] )
+	CameraFront	( pose [ 0.150	 0.000	 0.000	0.000 ] )	
+
+
+	## LOCALIZATION
+	## Report error-free position in world coordinates
+	localization "gps"
+	localization_origin [ 0 0 0 0 ]
+	## Some more realistic localization error
+	#localization "odom"
+	#odom_error [ 0.01 0.01 0.0 0.1 ]
+)
+
+
+
+
+################################################################################
+## CREATE SIMULATION
+################################################################################
+
+## MAIN SIMULATOR WINDOW
+window
+(
+	size	[ 500 500 ]				# size of the window in pixels
+	center	[ 0 0 ]					# center [float float] (meters)
+	#rotate	[ 0.000 -1.560 ]
+	scale	5
+)
+
+## ENVIRONMENT BITMAP
+floorMap
+(
+	name	"map_01"
+	bitmap 	"../maps/map_01.pgm"
+	size 	[100 100 50]			# (meters)	
+	pose 	[ 0.0 0.0 0.000 0.000 ]	#
+)
+
+## ROBOT INSTANCE
+robotBase
+(
+	pose	[ 25.0 0.0 0.000 180.0 ] 
+	name	"robot" 
+	color 	"blue"
+)
+
