@@ -1,0 +1,25 @@
+<!-- MAP SERVER: Makes a map available in ROS -->
+
+<launch>
+
+	## TF
+	<arg name="FixedFrame" default="map" />
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/simbot/2019_igdm_simbot_static_transform_publisher.launch" />
+
+
+
+	## SIMBOT
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/simbot/2019_igdm_simbot_stage.launch" />
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/simbot/2019_igdm_simbot_map_server.launch" />
+	
+
+
+	## VISUALIZATION
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/simbot/2019_igdm_simbot_rviz.launch" />
+
+
+
+	## NAVIGATION
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/simbot/2019_igdm_simbot_move_base.launch" />	
+
+</launch>
