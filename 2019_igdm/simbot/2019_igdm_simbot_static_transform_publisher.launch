@@ -1,5 +1,12 @@
 <!-- publish tf map-odom -->
 
 <launch>
-	<node pkg="tf" type="static_transform_publisher" name="tf_map_odom_publisher" respawn="false" output="screen" args="0 0 0 0 0 0 1 map odom 100" />
+	<node 
+		pkg="tf2_ros" 
+		type="static_transform_publisher" 
+		name="tf_map_odom_broadcaster"
+		respawn="true"
+		output="screen"
+		args="0 0 0 0 0 0 map odom"
+	/>
 </launch>

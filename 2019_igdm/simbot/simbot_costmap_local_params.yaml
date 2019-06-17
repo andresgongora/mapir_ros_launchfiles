@@ -14,8 +14,8 @@ local_costmap:
   publish_frequency: 5.0
   static_map: false
   rolling_window: true
-  width: 3.0
-  height: 3.0
+  width: 4.0
+  height: 4.0
   resolution: 0.1
   min_obstacle_height: -10
   always_send_full_costmap: true
@@ -24,8 +24,8 @@ local_costmap:
     track_unknown_space: true
   
   inflation:
-    inflation_radius: 0.75
-    cost_scaling_factor: 5.0
+    inflation_radius: 0.5
+    cost_scaling_factor: 3
  
 # proxemic:
 #  amplitude: 150.0
