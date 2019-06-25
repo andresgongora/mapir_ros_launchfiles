@@ -24,8 +24,8 @@ DWAPlannerROS:
  acc_lim_trans: 0.45
  
  prune_plan: true
- xy_goal_tolerance: 0.2     #m
- yaw_goal_tolerance: 0.4    #rad
+ xy_goal_tolerance: 0.1     #m
+ yaw_goal_tolerance: 0.3    #rad
  
  trans_stopped_vel: 0.0
  rot_stopped_vel: 0.8
@@ -67,7 +67,7 @@ TrajectoryPlannerROS:
   
 #Goal Tolerance Parameters
   yaw_goal_tolerance: 0.4       #rad
-  xy_goal_tolerance: 0.3        #m
+  xy_goal_tolerance: 0.1        #m
   
 #Forward Simulation Parameters
   sim_time: 5.0

@@ -22,7 +22,7 @@ global_costmap:
  
   inflation:
     inflation_radius: 0.75
-    cost_scaling_factor: 2000
+    cost_scaling_factor: 5
     
 # proxemic:
 #   amplitude: 150.0
