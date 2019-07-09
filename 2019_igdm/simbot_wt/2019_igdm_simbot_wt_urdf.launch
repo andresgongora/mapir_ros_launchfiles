@@ -1,0 +1,6 @@
+<!-- URDF model of the robot (giraff) -->
+<launch>
+	<param name="robot_description" textfile="$(find missions_pkg)/launch/andresgongora/2019_igdm/rviz/r2d2.urdf" />
+	<param name="use_gui" value="False"/>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+</launch>

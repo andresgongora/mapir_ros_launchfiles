@@ -1,0 +1,27 @@
+<!-- MAP SERVER: Makes a map available in ROS -->
+
+<launch>
+
+	## USE SIM TIME, LET WEBOTS PUBLISH IT!
+	<param name="use_sim_time" value="true" />
+
+
+	## TF
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/webots/2019_igdm_webots_static_transform_publisher.launch" />
+
+
+	## VISUALIZATION
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/webots/2019_igdm_webots_rviz.launch" />
+
+
+
+	## SIMBOT
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/webots/2019_igdm_webots_map_server.launch" />
+
+
+
+	## NAVIGATION
+	<!--include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/webots/2019_igdm_webots_move_base.launch" /-->
+
+
+</launch>

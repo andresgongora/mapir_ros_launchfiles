@@ -1,0 +1,8 @@
+<!-- main mission file for the giraff_teleolfaction remote control station -->
+
+<launch>
+
+	### RVIZ ###
+	<node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find missions_pkg)launch/andresgongora/2019_igdm/rviz/2019_webots.rviz"/>
+
+</launch>
