@@ -1,0 +1,19 @@
+<!-- MAIN LAUNCH FILE -->
+
+<launch>
+
+
+	## TF
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/wt/2019_igdm_wt_static_transform_publisher.launch" />
+
+
+	## VISUALIZATION
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/wt/2019_igdm_wt_rviz.launch" />
+
+
+	## MAP
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/wt/2019_igdm_wt_map_server.launch" />
+
+
+
+</launch>
