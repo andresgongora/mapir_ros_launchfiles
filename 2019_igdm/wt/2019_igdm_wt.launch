@@ -2,7 +2,6 @@
 
 <launch>
 
-
 	## TF
 	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/wt/2019_igdm_wt_static_transform_publisher.launch" />
 
@@ -15,5 +14,7 @@
 	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/wt/2019_igdm_wt_map_server.launch" />
 
 
+	## ROSBAG
+	<include file="$(find missions_pkg)/launch/andresgongora/2019_igdm/wt/2019_igdm_wt_rosbag.launch" />
 
 </launch>
