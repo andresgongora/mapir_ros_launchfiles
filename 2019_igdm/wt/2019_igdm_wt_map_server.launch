@@ -1,7 +1,7 @@
 <!-- MAP SERVER: Makes a map available in ROS -->
 
 <launch>
-	<arg name="map_file" default="$(find missions_pkg)/launch/andresgongora/2019_igdm/maps/wind_tunnel.yaml" />
+	<arg name="map_file" default="$(find missions_pkg)/launch/andresgongora/2019_igdm/maps/wind_tunnel_obstacles_2_25.yaml" />
 	<arg name="launch_prefix" default="" />
 
 	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" launch-prefix="$(arg launch_prefix)" />
